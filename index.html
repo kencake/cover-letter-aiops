@@ -240,24 +240,30 @@
     }
     .section h2 em { font-style: italic; color: var(--red); }
 
-    /* EDITORIAL LETTER */
+    /* EDITORIAL LETTER — ZIGZAG */
     .letter-row {
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 48px;
-      padding: 40px 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      padding: 56px 0;
       border-top: 1px solid var(--border);
-      align-items: start;
+      align-items: center;
     }
     .letter-row:last-child { border-bottom: 1px solid var(--border); }
+
+    /* Even rows: label right, text left */
+    .letter-row:nth-child(even) .letter-label { order: 2; text-align: left; }
+    .letter-row:nth-child(even) .letter-text,
+    .letter-row:nth-child(even) .pull-quote,
+    .letter-row:nth-child(even) .sign-off { order: 1; }
 
     .letter-label {
       font-size: 10px;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--red);
-      padding-top: 4px;
       font-weight: 600;
+      align-self: center;
     }
 
     .letter-text {
@@ -382,6 +388,10 @@
       .stat-item { border-right: none; padding: 0; }
       .skills-list, .timeline-grid { grid-template-columns: 1fr; }
       .letter-row { grid-template-columns: 1fr; gap: 12px; }
+      .letter-row:nth-child(even) .letter-label,
+      .letter-row:nth-child(even) .letter-text,
+      .letter-row:nth-child(even) .pull-quote,
+      .letter-row:nth-child(even) .sign-off { order: unset; }
       .tl-item.full { grid-column: 1; }
     }
   </style>
