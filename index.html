@@ -296,34 +296,6 @@
     }
     .sign-off span { color: var(--muted); font-size: 13px; }
 
-    /* BUBBLE SURPRISE */
-    .bubble-trigger { position: relative; }
-
-    .surprise-bubble {
-      position: absolute;
-      top: -28px;
-      right: -20px;
-      background: var(--red);
-      color: #fff;
-      border-radius: 24px 24px 24px 4px;
-      padding: 14px 20px;
-      font-size: 13px;
-      font-weight: 500;
-      line-height: 1.5;
-      max-width: 220px;
-      box-shadow: 0 8px 32px rgba(255,54,33,0.35);
-      opacity: 0;
-      transform: scale(0.4) translateY(20px);
-      transform-origin: bottom left;
-      transition: opacity 0.4s cubic-bezier(0.34,1.56,0.64,1), transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .surprise-bubble.pop {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
 
     /* SKILLS */
     .skills-list {
@@ -460,10 +432,9 @@
       <div class="stat-num"><span>156</span>%</div>
       <div class="stat-label">Annual Achievement</div>
     </div>
-    <div class="stat-item bubble-trigger">
+    <div class="stat-item">
       <div class="stat-num">#<span>1</span></div>
       <div class="stat-label">President's Club</div>
-      <div class="surprise-bubble">Top performer globally · FY2025</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">12<span>mo</span></div>
@@ -541,10 +512,9 @@
       <p class="letter-text">I have a confession to make: I chose business school partly to run away from maths. Not because I wasn't good at it — I studied both a <strong>Bachelor's in Mathematics & IT</strong> and a <strong>Master's in Business Management</strong> — but because somewhere along the way I let a quiet limiting belief convince me that the analytical world wasn't really for me. I built a career in sales and partnerships instead, and honestly, I loved it.</p>
     </div>
 
-    <div class="letter-row reveal bubble-trigger">
+    <div class="letter-row reveal">
       <div class="letter-label">The shift</div>
       <p class="pull-quote">"Working at Databricks, surrounded by data engineers and AI researchers, I stopped watching from the sidelines and started leaning back in."</p>
-      <div class="surprise-bubble">Maths & IT Bachelor → BDR → AI Ops ✦</div>
     </div>
 
     <div class="letter-row reveal">
@@ -663,20 +633,6 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // BUBBLE SURPRISE
-    const bubbleTargets = document.querySelectorAll('.bubble-trigger');
-    const bubbleObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        const bubble = e.target.querySelector('.surprise-bubble');
-        if (!bubble) return;
-        if (e.isIntersecting) {
-          bubble.classList.add('pop');
-        } else {
-          bubble.classList.remove('pop');
-        }
-      });
-    }, { threshold: 0.5 });
-    bubbleTargets.forEach(el => bubbleObs.observe(el));
   </script>
 </body>
 </html>
